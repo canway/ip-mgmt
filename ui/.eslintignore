@@ -1,0 +1,6 @@
+
+/config/
+/dist/
+/*.js
+/node_modules/
+/src/fiter/validator

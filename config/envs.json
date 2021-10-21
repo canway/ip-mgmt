@@ -1,0 +1,8 @@
+[
+  {
+    "source_key": "API_VERSION",
+    "env_key": "BKAPP_API_VERSION",
+    "examples": "v2",
+    "desc": "蓝鲸平台企业版版本（v2，v3）"
+  }
+]

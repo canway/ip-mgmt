@@ -1,0 +1,5 @@
+export APP_ID="ip-mgmt"
+export APP_TOKEN=""
+export RUN_VER="open"
+export BK_URL=""
+export BK_PAAS_HOST=""

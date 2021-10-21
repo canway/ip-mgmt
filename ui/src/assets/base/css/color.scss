@@ -1,0 +1,67 @@
+/**
+* This program is named IP Management Center and it is a tool to help network administrators manage enterprise IP resource pool reasonably and conveniently.
+* Copyright (C) <2021>  <Guangzhou Canway Technology Co.,Ltd.>
+* Contact details: jackliu@canway.net or 11th Floor, Building A，Fengxing Plaza No. 67 Tianhe East Road Tianhe District, Guangzhou, China 510630. dengyuliu, 15927493530
+* This file is part of IP management center.
+* IP Management Center is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+* IP Management Center is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+* You should have received a copy of the GNU General Public License along with Canway software. If not, see <https://www.gnu.org/licenses/>.
+*/
+// 基础颜色统一配置
+$head-theme: "light"; // 选择 light 或 blue
+$headerHeight: 60px;
+
+$base-color: #399CFF; // 导航主⾊ 导航⽂字 重要按钮 链接⽂本
+$base-hover: #61B0FF; // 主色hover
+$bask-dark: #0D90FC;
+$chart-first: #88c4ff; // 图表颜色
+$chart-second: #b0d7ff; // 图表颜色
+$bask-tips-border: #d7ebff; // 提示框边框
+$base-card: #e9f5ff; // 卡片，信息提示窗背景
+$base-color-blue: #399CFF; // 蓝色主题的导航主⾊ 导航⽂字 重要按钮 链接⽂本
+
+$primary-color: #3fc6ef; // 次要按钮
+$primary-hover: #63D6FA; // hover
+
+$info-color: #40C6EF; // 次要按钮
+$info-hover: #66D1F2; // hover
+$info-border: #d8f4ff; // 边框颜色
+$info-back: #ebf9ff; // 背景颜色
+
+$success-color: #3de586; // 操作成功 谨慎使⽤ 成功信息
+$success-hover: #59D58F; // hover
+$success-border: #DEF6E8; // 边框颜色
+$success-back: #EEFAF3; // 背景颜色
+
+$warn-color: #FEA30D; // 警告，谨慎使用
+$warn-hover: #F8CC64; // hover
+$warn-border: #FFEDCF; // 边框颜色
+$warn-back: #FEF5E6; // 背景颜色
+
+$error-color: #ED3F3F; // 操作警告 信息提醒 失败信息
+$error-hover: #F39082; // hover
+$error-border: #FBD9D9; // 边框颜色
+$error-back: #FDEBEB; // 背景颜色
+
+$cancel-color: #C9C9C9; // 取消选择 边框颜⾊
+$cancel-hover: #A9A9A9; // hover
+
+$nav-color: #90BFE1; // 导航hover
+
+$sup-color: #F4F9FA; // 辅色
+
+$font-color: #282A2B; // 主要⽂字 标题
+
+$font-second: #5F6568; // 常规文字 正文
+
+$font-third: #888E94; // 次要文字
+
+$border-color: #DADEE2; // 边框
+
+$Dividing-line-color: #E7EBEE; // 分割线
+
+$background-color: #EFF2F5; // 背景
+
+$white-color: #fff; // 白色
+
+$auxiliary-color: #F7F8F9; // 辅助背景

@@ -1,0 +1,207 @@
+/**
+* This program is named IP Management Center and it is a tool to help network administrators manage enterprise IP resource pool reasonably and conveniently.
+* Copyright (C) <2021>  <Guangzhou Canway Technology Co.,Ltd.>
+* Contact details: jackliu@canway.net or 11th Floor, Building A，Fengxing Plaza No. 67 Tianhe East Road Tianhe District, Guangzhou, China 510630. dengyuliu, 15927493530
+* This file is part of IP management center.
+* IP Management Center is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+* IP Management Center is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+* You should have received a copy of the GNU General Public License along with Canway software. If not, see <https://www.gnu.org/licenses/>.
+*/
+// 公共样式
+// 外边距
+.margin-0 {
+    margin: 0 !important;
+}
+
+.margin-10 {
+    margin: 10px;
+}
+
+.margin-20 {
+    margin: 20px;
+}
+
+.margin-top5 {
+    margin-top: 5px;
+}
+
+.margin-top10 {
+    margin-top: 10px;
+}
+
+.margin-top15 {
+    margin-top: 15px;
+}
+
+.margin-top20 {
+    margin-top: 20px;
+}
+
+.margin-top25 {
+    margin-top: 25px;
+}
+
+.margin-top30 {
+    margin-top: 30px;
+}
+
+.margin-top40 {
+    margin-top: 40px;
+}
+
+.margin-bottom10 {
+    margin-bottom: 10px;
+}
+
+.margin-left10 {
+    margin-left: 10px !important;
+}
+
+.margin-left20 {
+    margin-left: 20px;
+}
+
+.margin-right10 {
+    margin-right: 10px;
+}
+
+// 内边距
+.padding-0 {
+    padding: 0 !important;
+}
+
+.padding-5 {
+    padding: 5px !important;
+}
+
+.padding-10 {
+    padding: 10px !important;
+}
+
+.padding-16 {
+    padding: 16px !important;
+}
+
+.padding-top10 {
+    padding-top: 10px;
+}
+
+.padding-bottom10 {
+    padding-bottom: 10px;
+}
+
+.padding-left10 {
+    padding-left: 10px;
+}
+
+.padding-right10 {
+    padding-right: 10px;
+}
+
+// 小手
+.pointer {
+    cursor: pointer;
+}
+
+// 浮动
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+// 文本
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+// 字体
+.font-bold {
+    font-weight: bold;
+}
+
+// 特大标题 默认加粗
+.font-32 {
+    font-weight: bold !important;
+    font-size: 32px !important;
+}
+
+// 主标题 默认加粗
+.font-20 {
+    font-weight: bold !important;
+    font-size: 20px !important;
+}
+
+// 标题 默认加粗
+.font-18 {
+    font-size: 18px !important;
+    font-weight: bold !important;
+}
+
+// 小标题 默认加粗
+.font-16 {
+    font-size: 16px !important;
+    font-weight: bold !important;
+}
+
+// 正文
+.font-14 {
+    font-size: 14px !important;
+}
+
+// 正文(小)
+.font-13 {
+    font-size: 13px !important;
+}
+
+// 辅助文字(小)
+.font-12 {
+    font-size: 12px !important;
+}
+
+// ---------字体-----------
+// 中文字体
+// 优先字体
+.PingFang {
+    font-family: "PingFang SC";
+}
+
+// 备用字体
+.Source-Han-Sans {
+    font-family: "Source Han Sanns";
+}
+
+// 次级备用字体
+.Microsoft-YaHei {
+    font-family: "Microsoft YaHei";
+}
+
+// 优先字体
+.Helvetica-Neue {
+    font-family: "Helvetica Neue";
+}
+
+// 备用字体
+.Helvetica {
+    font-family: Helvetica;
+}
+
+// 次级备用字体
+.Arial {
+    font-family: Arial;
+}
+
+// display
+.dis-inline {
+    display: inline-block;
+}

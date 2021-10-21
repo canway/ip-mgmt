@@ -1,0 +1,90 @@
+before_script:
+  - pwd
+  - whoami
+  - which python
+  - which node && node --version
+  - which npm && npm --version
+  - LANG="zh_CN.utf8"
+  - export LC_ALL=zh_CN.UTF-8
+  - pip list
+  - pyenv versions
+  # 请把下方命令中 python3_vue 改为你的项目APP_ID
+  - export APP_ID=ip-mgmt
+  # python3 项目创建专属虚拟环境
+  - pyenv virtualenv -p python3.6 3.6.7 ${APP_ID}_py3.6.7 || echo "virtualenv exist"
+  - pyenv shell ${APP_ID}_py3.6.7
+  # python2 项目创建专属虚拟环境
+  #- pyenv virtualenv 2.7.15 ${APP_ID}_py2.7.15 || echo "virtualenv exist
+  #- pyenv shell ${APP_ID}_py2.7.15
+  - sed -i.bak "s#git+https://#git+https://$GIT_USERNAME:$GIT_PASSWORD@#g" requirements.txt && rm requirements.txt.bak
+  - pip install -r requirements.txt
+  - pip install flake8
+  - pip install coverage
+
+stages:
+  - pep8
+  - unittest
+  - webpack
+
+pep8:
+  stage: pep8
+  tags:
+    - canway-tag
+  script:
+    - flake8
+  except:
+    - master
+    - release
+
+unittest:
+  stage: unittest
+  tags:
+    - canway-tag
+  script:
+    - source scripts/develop/envs.sh
+    - mysql -h localhost -uroot -e "CREATE DATABASE IF NOT EXISTS \`$APP_ID\` default charset utf8 COLLATE utf8_general_ci;"
+    - echo 'yes' | sh scripts/test/coverage_and_report.sh
+  except:
+    - master
+    - release
+    - open-github
+
+
+webpack:
+  stage: webpack
+  tags:
+    - canway-tag
+  cache:
+    untracked: true
+    paths:
+      - ./ui/node_modules
+  script:
+    # pull newest code
+    - echo "start build"
+    - rm -rf $CI_PROJECT_NAME
+    - git clone http://$GIT_USERNAME:$GIT_PASSWORD@$CI_SERVER_HOST/$CI_PROJECT_PATH.git
+    - cd $CI_PROJECT_NAME && git checkout $CI_COMMIT_REF_NAME
+    # loads node_modules cache
+    - mv /home/gitlab-runner/cache/$CI_PROJECT_PATH/node_modules ./ui/ || echo "cache/node_modules does not exist"
+    - cd  ./ui/ && ls -al
+    # build
+    # - npm install
+    - npm run build
+    # push code with static/dist
+    - cd ../
+    - pwd
+    - date >> .ci_commit
+    - git add -f -A static/dist .ci_commit
+    - git add -f -A templates .ci_commit
+    - git config --global user.name ci
+    - git config --global user.email ci@email.com
+    - git commit -m "auto commit [ci skip]"
+    - git push http://$GIT_USERNAME:$GIT_PASSWORD@$CI_SERVER_HOST/$CI_PROJECT_PATH.git $CI_COMMIT_REF_NAME
+    # cache npm node_modules
+    - pwd
+    - rm -rf /home/gitlab-runner/cache/$CI_PROJECT_PATH/node_modules
+    - test -d /home/gitlab-runner/cache/$CI_PROJECT_PATH/ || mkdir /home/gitlab-runner/cache/$CI_PROJECT_PATH/
+    - mv ./ui/node_modules /home/gitlab-runner/cache/$CI_PROJECT_PATH/
+    - echo "end build"
+  only:
+    - release

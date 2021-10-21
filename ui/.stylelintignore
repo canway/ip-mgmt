@@ -1,0 +1,10 @@
+/build/
+/config/
+/dist/
+/*.js
+/node_modules/
+/src/assets/
+/src/components/codeMirror/codeMirror.vue
+/src/components/modify/index.vue
+/src/views/Ip/addressPool/modify.vue
+/src/views/Ip/subnet/modify.vue
