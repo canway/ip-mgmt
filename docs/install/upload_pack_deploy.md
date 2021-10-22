@@ -20,7 +20,7 @@ npm install
 ### 2. 打包前端资源
 在 ui/ 目录下，继续执行以下命令打包前端静态资源
 ```bash
-npm run build -- --SITE_URL="/o/bk_sops" --STATIC_ENV="open/prod"
+npm run build
 ```
 
 

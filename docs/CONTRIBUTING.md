@@ -1,4 +1,4 @@
-# Contributing to bk-sops
+# Contributing to ip-mgmt
 我们欢迎 [Report Issues](https://github.com/canway/ip-mgmt/issues) 或者 [Pull requests](https://github.com/canway/ip-mgmt/pulls)。 在贡献代码之前请阅读以下指引。
 
 
