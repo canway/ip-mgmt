@@ -31,7 +31,8 @@ class ApplyFilter(FilterSet):
     business_system = filters.CharFilter(lookup_expr="icontains")
     ip = filters.CharFilter(method="ip_search", lookup_expr="icontains")
 
-    def ip_search(self, queryset, name, value):
+    @staticmethod
+    def ip_search(queryset, name, value):
         queryset = queryset.filter(saved_ips__ip_list__contains=value)
         return queryset
 

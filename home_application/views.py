@@ -12,9 +12,6 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.http import require_GET
 
-from blueapps.account.decorators import login_exempt
-from home_application.ip_pool.views import IpPoolsViewSet
-
 
 def home(request):
     """
@@ -29,9 +26,3 @@ def login_info(request):
     return JsonResponse(
         {"result": True, "data": {"username": request.user.username, "super": request.user.is_superuser}}
     )
-
-
-@login_exempt
-def get_ip_pool(request):
-    ip_pool = IpPoolsViewSet()
-    return ip_pool.list(request)

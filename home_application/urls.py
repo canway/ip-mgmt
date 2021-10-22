@@ -19,7 +19,6 @@ from home_application.ip_abnormal.views import IpAbnormal
 from home_application.ip_net.views import IpNetList
 from home_application.ip_pool.views import IpPoolsViewSet
 from home_application.offline_except.views import OfflineExceptViewSet
-from home_application.sys_management.open_url import urlpatterns as open_api_url
 from home_application.sys_management.views import Cmdb, CmdbPeri, MakeSync, OpeLog, Setting, SyncRecord
 
 urlpatterns = [
@@ -27,7 +26,6 @@ urlpatterns = [
     url(r"^login_info/$", views.login_info),
     url(r"^cmdb/period/$", CmdbPeri.as_view()),
     url(r"^make_sync/(?P<pk>\d+)/$", MakeSync.as_view()),
-    url(r"^open/$", views.get_ip_pool),
 ]
 
 routers = DefaultRouter(trailing_slash=True)
@@ -43,4 +41,3 @@ routers.register(r"sync_record", SyncRecord, basename="sync_record")
 routers.register(r"operation_log", OpeLog, basename="operation_log")
 routers.register(r"sys", Setting, basename="settings_views")
 urlpatterns += routers.urls
-urlpatterns += open_api_url

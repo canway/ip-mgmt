@@ -92,6 +92,6 @@ class IpAbnormal(ApiGenericMixin, viewsets.ModelViewSet):
         title = ABNORMAL_IP_ADDRESS_TITLE
         try:
             return export_excel_data(custom_attrs, detail, filename, title)
-        except BaseException as e:
+        except Exception as e:
             logging.exception(e)
             return JsonResponse({"result": False, "message": str(e)})

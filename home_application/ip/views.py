@@ -238,7 +238,7 @@ class IpViewSet(ApiGenericMixin, ModelViewSet):
                         errors.append(str(err))
                     else:
                         update_list.append(real_ip)
-            except BaseException as e:
+            except Exception as e:
                 errors.append(str(e))
         return errors, update_list
 
@@ -280,7 +280,7 @@ class IpViewSet(ApiGenericMixin, ModelViewSet):
             to_excel_data = [title]
             data_key = list(title.keys())
             return make_excel(data_key, filename, to_excel_data)
-        except BaseException as e:
+        except Exception as e:
             logger.exception(e)
             return JsonResponse({"result": False, "data": [], "message": str(e)})
 

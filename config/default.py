@@ -89,7 +89,7 @@ REST_FRAMEWORK = {
     # 对所有分页器生效，但优先级低
     # "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",  # 指定分页类（源码setting.py配置文件中的此配置为None）
     # DRF自定义错误返回
-    "EXCEPTION_HANDLER": "home_application.sys_management.error.custom_error",
+    "EXCEPTION_HANDLER": "home_application.drf.error.custom_error",
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
     "PAGE_SIZE": 10,
     "TEST_REQUEST_DEFAULT_FORMAT": "json",

@@ -9,7 +9,6 @@ IP Management Center is distributed in the hope that it will be useful, but WITH
 You should have received a copy of the GNU General Public License along with Canway software. If not, see <https://www.gnu.org/licenses/>.
 """  # noqa
 from rest_framework import serializers
-from rest_framework.pagination import PageNumberPagination
 
 from home_application.models import Ips
 
@@ -23,22 +22,20 @@ class IpSerializer(serializers.ModelSerializer):
         model = Ips
         fields = "__all__"
 
-    def get_ip_net_name(self, obj):
+    @staticmethod
+    def get_ip_net_name(obj):
         if obj.ip_net:
             return obj.ip_net.ip_net
-        return None
+        return ""
 
-    def get_ip_pool(self, obj):
+    @staticmethod
+    def get_ip_pool(obj):
         if obj.ip_net:
             return obj.ip_net.ip_pool.name
-        return None
+        return ""
 
-    def get_ip_pool_id(self, obj):
+    @staticmethod
+    def get_ip_pool_id(obj):
         if obj.ip_net:
             return obj.ip_net.ip_pool.id
-        return None
-
-
-class StandardResultsSetPagination(PageNumberPagination):
-    page_query_param = "page"
-    page_size_query_param = "page_size"
+        return ""

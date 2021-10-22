@@ -18,12 +18,11 @@ from rest_framework.decorators import action
 from home_application.celery_tasks import create_by_ip_net, create_ip_by_ip_nets
 from home_application.enums import IP_CHILD_MANAGEMENT, IP_SUBNET_TITLE
 from home_application.exceptions import IPPoolCreateException
-from home_application.ip.tools import delete_by_ip_net
 from home_application.ip_net.ip_net_filter import DataFilter
 from home_application.ip_net.serializers import IpNetSerializer
 from home_application.ip_net.tools import check_ip_net_normal, create_ip_net
 from home_application.mixins import ApiGenericMixin
-from home_application.models import CustomAttr, IpNet, IpPools, OperationLog, Settings
+from home_application.models import CustomAttr, IpNet, IpPools, Ips, OperationLog, Settings
 from home_application.utilities.export_helper.excel_export import format_data_and_export_excel
 
 
@@ -88,6 +87,11 @@ class IpNetList(ApiGenericMixin, viewsets.ModelViewSet):
         create_ip_by_ip_nets.delay(net_list)
         return JsonResponse({"result": True, "message": "\n".join(error_msgs)})
 
+    @staticmethod
+    def delete_by_ip_net(ip_net_id):
+        deleted_ips = Ips.objects.filter(ip_net_id=ip_net_id).filter(is_cmdb_sync=False)
+        deleted_ips.update(gateway="", dns="", bk_cloud_id=None)
+
     def destroy(self, request, *args, **kwargs):
         obj = self.get_object()
         can_delete = obj.can_delete()
@@ -96,7 +100,7 @@ class IpNetList(ApiGenericMixin, viewsets.ModelViewSet):
         else:
             instance = self.get_object()
             self.perform_destroy(instance)
-            delete_by_ip_net(obj.id)
+            self.delete_by_ip_net(obj.id)
             result = {"result": True, "message": "删除成功"}
             OperationLog.objects.create(
                 operate_type=OperationLog.DELETE,

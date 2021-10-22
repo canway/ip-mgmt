@@ -28,12 +28,6 @@ class IpPoolFilterSet(FilterSet):
     name = filters.CharFilter(lookup_expr="icontains")
     create_by = filters.CharFilter(lookup_expr="icontains")
 
-    # custom_attributes = filters.CharFilter(field_name="custom_attr", method="custom_attr_search", label="自定义属性")
-
-    # TODO 针对自定义属性，筛选的逻辑不够完善，后续优化
-    # 自定义属性的数据格式 [{"name": "attr1", "value": "value1"}, {"name": "attr2", "value": "value2"}]
-    # 不同IP的自定义属性的列表数量不一定相同
-    # 需要实现根据name进行精确匹配，同时对应的value进行模糊匹配
     @staticmethod
     def custom_attr_search(queryset, name, value):
         value_list = json.loads(value)

@@ -27,44 +27,30 @@ class IpAbnormalIpsSerializer(serializers.ModelSerializer):
         model = AbnormalIp
         fields = "__all__"
 
-    def get_ip_obj(self, obj):
-        try:
-            ip_obj = model_to_dict(obj.ip)
-            ip_obj["ip_pool"] = obj.ip.ip_net.ip_pool.name if obj.ip.ip_net else ""
-        except BaseException:
-            return None
+    @staticmethod
+    def get_ip_obj(obj):
+        ip_obj = model_to_dict(obj.ip)
+        ip_obj["ip_pool"] = obj.ip.ip_net.ip_pool.name if obj.ip.ip_net else ""
         return ip_obj
 
-    def get_ip_net(self, obj):
-        try:
-            if obj.ip.ip_net:
-                return obj.ip.ip_net.ip_net
-            else:
-                return None
-        except BaseException:
-            return None
+    @staticmethod
+    def get_ip_net(obj):
+        if obj.ip.ip_net:
+            return obj.ip.ip_net.ip_net
+        return ""
 
-    def get_ip_pool(self, obj):
-        try:
-            if obj.ip.ip_net:
-                return obj.ip.ip_net.ip_pool.name
-            else:
-                return None
-        except BaseException:
-            return None
+    @staticmethod
+    def get_ip_pool(obj):
+        if obj.ip.ip_net:
+            return obj.ip.ip_net.ip_pool.name
+        return ""
 
-    def get_offline_days(self, obj):
-        try:
-            return (
-                (datetime.datetime.now() - obj.ip.offline_at).days
-                if not obj.ip.online_status and obj.ip.offline_at
-                else 0
-            )
-        except BaseException:
-            return 0
+    @staticmethod
+    def get_offline_days(obj):
+        return (
+            (datetime.datetime.now() - obj.ip.offline_at).days if not obj.ip.online_status and obj.ip.offline_at else 0
+        )
 
-    def get_offline_at(self, obj):
-        try:
-            return obj.ip.offline_at
-        except BaseException:
-            return None
+    @staticmethod
+    def get_offline_at(obj):
+        return obj.ip.offline_at

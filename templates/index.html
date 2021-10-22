@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License along with Can
 <body>
 <script>
     if ('{{ RUN_MODE }}' === 'DEVELOP') {
-        window.siteUrl = window.location.origin
+        window.siteUrl = window.location.origin + "/"
     } else {
         window.siteUrl = '{{ BK_PLAT_HOST }}{{ SITE_URL }}'
     }
