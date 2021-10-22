@@ -8,7 +8,6 @@ IP Management Center is free software: you can redistribute it and/or modify it 
 IP Management Center is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 You should have received a copy of the GNU General Public License along with Canway software. If not, see <https://www.gnu.org/licenses/>.
 """  # noqa
-import json
 
 from django_filters.rest_framework import OrderingFilter, filters
 from django_filters.rest_framework.filterset import FilterSet
@@ -27,13 +26,6 @@ class IpPoolFilterSet(FilterSet):
     )
     name = filters.CharFilter(lookup_expr="icontains")
     create_by = filters.CharFilter(lookup_expr="icontains")
-
-    @staticmethod
-    def custom_attr_search(queryset, name, value):
-        value_list = json.loads(value)
-        for item in value_list:
-            queryset = queryset.filter(custom_attr__name=item["name"], custom_attr__value=item["value"])
-        return queryset
 
     class Meta:
         model = IpPools
