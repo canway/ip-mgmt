@@ -1,10 +1,6 @@
 name: Lint
 
-on:
-  push:
-    paths:
-      - '*.py'
-
+on: [pull_request, push]
 jobs:
   flake8_py3:
     runs-on: ubuntu-latest
@@ -12,7 +8,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v1
         with:
-          python-version: 3.6.7
+          python-version: 3.6.15
           architecture: x64
       - name: Checkout PyTorch
         uses: actions/checkout@master
