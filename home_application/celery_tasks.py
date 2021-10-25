@@ -206,7 +206,7 @@ def abnormal_check():
                 [
                     AbnormalIp(
                         abnormal_code=AbnormalIp.ASSIGNED_EXCEEDED_TIME,
-                        ip=i["ip"],
+                        ip_id=i["id"],
                         remark="ip:{} 已离线{} 天".format(i["ip"], now - i["offline_at"]),
                     )
                     for i in abnormal_ip

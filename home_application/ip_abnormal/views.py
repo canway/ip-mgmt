@@ -65,7 +65,7 @@ class IpAbnormal(ApiGenericMixin, viewsets.ModelViewSet):
                     update_list.append(abnormal_ip)
                 except Exception as e:
                     error_list.append(str(e))
-        with transaction.atomic:
+        with transaction.atomic():
             Ips.objects.bulk_update(update_ip_list, ["is_cmdb_sync", "allocate_status", "remark"], batch_size=100)
             AbnormalIp.objects.bulk_update(update_list, ["abnormal_code", "remark", "checked"], batch_size=100)
             AbnormalIp.objects.filter(id__in=ip_ids).exclude(

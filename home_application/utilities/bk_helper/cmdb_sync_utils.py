@@ -29,7 +29,7 @@ class CMDBSync(object):
         self.sync_list = []
         self.sync_list_without_ip_id = {}
         self.sync_map = copy.deepcopy(sync_map)
-        self.sync_map.pop(sync_obj.id)
+        self.sync_map.pop(sync_obj.id, None)
 
     def start_sync(self):
         attr_kwargs = {"bk_obj_id": self.sync_obj.model_id, "condition": {"bk_property_type": "enum"}}
