@@ -110,7 +110,7 @@ class CMDBSync(object):
         bk_cloud_id = inst.get(self.attr_dist["bk_cloud_id"]["cmdb_attr"], 0)
         gateway = inst.get(self.attr_dist["gateway"]["cmdb_attr"], "")
         dns = inst.get(self.attr_dist["dns"]["cmdb_attr"], "")
-        ip_obj = self.ip_map.pop(ip, None)
+        ip_obj = self.ip_map.get(ip)
         if not ip_obj:
             ip_obj = Ips(
                 allocate_status=Ips.DISTRIBUTION,
