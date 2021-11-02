@@ -321,12 +321,16 @@ You should have received a copy of the GNU General Public License along with Can
                 this.loading = true
                 // page:页数, page_size:每页数
                 try {
+                    let sort = this.getProp()
+                    if (sort === null || sort === undefined) {
+                        sort = 'create_at'
+                    }
                     const res = await this.$api.search_ip_net({
                         ...this.searchParams,
                         ...params,
                         page: this.pagination.current,
                         page_size: this.pagination.limit,
-                        sort: this.sort.order === 'ascending' ? this.getProp() : '-' + this.getProp()
+                        sort: this.sort.order === 'ascending' ? sort : '-' + sort
                     })
                     if (res.result) {
                         this.pagination.count = res.data.count

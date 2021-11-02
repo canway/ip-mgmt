@@ -787,12 +787,16 @@ You should have received a copy of the GNU General Public License along with Can
                 this.loading = true
                 // page:页数, page_size:每页数
                 try {
+                    let sort = this.getProp()
+                    if (sort === null || sort === undefined) {
+                        sort = 'create_at'
+                    }
                     const res = await this.$api.search_ip({
                         ...this.searchParams,
                         ...params,
                         page: this.pagination.current,
                         page_size: this.pagination.limit,
-                        sort: this.sort.order === 'ascending' ? this.getProp() : '-' + this.getProp()
+                        sort: this.sort.order === 'ascending' ? sort : '-' + sort
                     })
                     if (res.result) {
                         this.pagination.count = res.data.count
@@ -1084,66 +1088,66 @@ You should have received a copy of the GNU General Public License along with Can
 </script>
 
 <style scoped lang="scss">
-.radius-tip {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-}
-
-.dropdown-trigger-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #c4c6cc;
-    height: 32px;
-    line-height: 32px;
-    min-width: 68px;
-    border-radius: 2px;
-    padding: 0 15px;
-    color: #63656E;
-    font-size: 14px;
-    background-color: #FFF;
-}
-
-.dropdown-trigger-btn.bk-icon {
-    font-size: 18px;
-}
-
-.dropdown-trigger-btn .bk-icon {
-    font-size: 22px;
-}
-
-.dropdown-trigger-btn:hover {
-    cursor: pointer;
-    border-color: #979ba5;
-}
-
-/deep/ .bk-dropdown-content {
-    overflow: visible !important;
-
-    .bk-dropdown-list {
-        margin-top: -5px;
+    .radius-tip {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
     }
-}
 
-/deep/ .bk-dropdown-menu .bk-dropdown-list > li {
-    background-color: #fff;
-    border: 1px solid #dcdee5;
-    border-top: none;
-    border-bottom: none;
-}
+    .dropdown-trigger-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #c4c6cc;
+        height: 32px;
+        line-height: 32px;
+        min-width: 68px;
+        border-radius: 2px;
+        padding: 0 15px;
+        color: #63656E;
+        font-size: 14px;
+        background-color: #FFF;
+    }
 
-/deep/ .bk-dropdown-menu .bk-dropdown-list > li:first-child {
-    border-bottom: none;
-    border-top: none;
-    border-top-right-radius: 2px;
-    border-top-left-radius: 2px;
-}
+    .dropdown-trigger-btn.bk-icon {
+        font-size: 18px;
+    }
 
-/deep/ .bk-dropdown-menu .bk-dropdown-list > li:last-child {
-    border-bottom: 1px solid #dcdee5;
-    border-bottom-right-radius: 2px;
-    border-bottom-left-radius: 2px;
-}
+    .dropdown-trigger-btn .bk-icon {
+        font-size: 22px;
+    }
+
+    .dropdown-trigger-btn:hover {
+        cursor: pointer;
+        border-color: #979ba5;
+    }
+
+    /deep/ .bk-dropdown-content {
+        overflow: visible !important;
+
+        .bk-dropdown-list {
+            margin-top: -5px;
+        }
+    }
+
+    /deep/ .bk-dropdown-menu .bk-dropdown-list > li {
+        background-color: #fff;
+        border: 1px solid #dcdee5;
+        border-top: none;
+        border-bottom: none;
+    }
+
+    /deep/ .bk-dropdown-menu .bk-dropdown-list > li:first-child {
+        border-bottom: none;
+        border-top: none;
+        border-top-right-radius: 2px;
+        border-top-left-radius: 2px;
+    }
+
+    /deep/ .bk-dropdown-menu .bk-dropdown-list > li:last-child {
+        border-bottom: 1px solid #dcdee5;
+        border-bottom-right-radius: 2px;
+        border-bottom-left-radius: 2px;
+    }
 </style>
