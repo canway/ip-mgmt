@@ -144,4 +144,4 @@ class ExcelImport(object):
         if self.table_exist_nets:
             table_exist_nets = "已经存在子网段{}\n".format(",".join(self.table_exist_nets))
         message = data_exception + table_exist_pools + table_exist_nets
-        return message or "导入成功！"
+        return message

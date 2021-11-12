@@ -53,7 +53,7 @@ class IpNetSerializer(serializers.ModelSerializer):
     def get_used_count(self, obj):
         used_count = 0
         for ip_obj in self.ip_list:
-            if ip_obj.ip_net_id == obj.id and ip_obj.allocate_status == Ips.NO_DISTRIBUTION:
+            if ip_obj.ip_net_id == obj.id and ip_obj.allocate_status == Ips.DISTRIBUTION:
                 used_count += 1
         return used_count
 

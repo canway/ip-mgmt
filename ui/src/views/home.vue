@@ -510,7 +510,7 @@ You should have received a copy of the GNU General Public License along with Can
                         const _arr = res.data
                         this.rateData = JSON.parse(JSON.stringify(_arr))
                         _arr.splice(0, 10).forEach(item => {
-                            _data.time.push(item.when_time.replace('T', ' ').substring(5, 15))
+                            _data.time.push(item.when_time.replace('T', ' ').substring(5, 16))
                             _data.value.push(Number(item.event.usage_rate.replace('%', '')))
                         })
                         const lineChart = this.$echarts.init(document.getElementById('lineCharts'))
@@ -958,7 +958,7 @@ You should have received a copy of the GNU General Public License along with Can
     .bottom-content {
         margin-top: 20px;
         padding: 20px;
-        height: 350px;
+        height: 400px;
         background: #fff;
         box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
         border-radius: 2px;

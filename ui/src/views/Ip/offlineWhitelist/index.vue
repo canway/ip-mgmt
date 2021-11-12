@@ -264,7 +264,7 @@ You should have received a copy of the GNU General Public License along with Can
                     },
                     {
                         key: 'create_at',
-                        label: '分配时间',
+                        label: '添加时间',
                         attr: {
                             minWidth: '160px',
                             showOverflowTooltip: true

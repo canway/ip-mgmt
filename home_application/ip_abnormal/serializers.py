@@ -53,4 +53,4 @@ class IpAbnormalIpsSerializer(serializers.ModelSerializer):
 
     @staticmethod
     def get_offline_at(obj):
-        return obj.ip.offline_at
+        return obj.ip.offline_at.strftime("%Y-%m-%d %H:%M:%S") if obj.ip.offline_at else ""

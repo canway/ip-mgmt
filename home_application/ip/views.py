@@ -134,7 +134,7 @@ class IpViewSet(ApiGenericMixin, ModelViewSet):
         cus_attrs = list(CustomAttr.objects.filter(type=CustomAttr.IPS).values_list("name", flat=True))
         for real_ip in ip_list:
             for field in fields:
-                if not params.get(field):
+                if params.get(field) is None:
                     continue
                 setattr(real_ip, field, params[field])
             if params.get("expired_at") and real_ip.expired_at:

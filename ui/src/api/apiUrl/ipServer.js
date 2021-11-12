@@ -54,6 +54,9 @@ export default {
     search_ip: function(params) {
         return get(reUrl + 'ip/', params)
     },
+    search_distribute_ip: function(params) {
+        return get(reUrl + 'ip/?reserve_status=0&allocate_status=1', params)
+    },
     // ip检测
     status_check: function(params) {
         return get(reUrl + 'ip/status_check/', params)
