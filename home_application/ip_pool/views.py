@@ -215,7 +215,9 @@ class IpPoolsViewSet(ApiGenericMixin, ModelViewSet):
         # 设置表头
         excel_import_client = ExcelImport(table, request.user.username)
         message = excel_import_client.import_excel_data()
-        return JsonResponse({"result": True, "message": message})
+        if not message:
+            return JsonResponse({"result": True})
+        return JsonResponse({"result": False, "message": message})
 
     @action(methods=["get"], detail=False)
     def get_ip_pool_summary(self, request):
