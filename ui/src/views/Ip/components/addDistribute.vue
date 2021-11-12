@@ -81,7 +81,7 @@ You should have received a copy of the GNU General Public License along with Can
                             popperAppendToBody: false,
                             clearable: true,
                             allocateStatus: 1,
-                            url: 'search_ip',
+                            url: 'search_distribute_ip',
                             defaultOption: ipDefaultOption
                         }"
                         @row-change="ipSelectChange"
