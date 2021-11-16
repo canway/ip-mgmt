@@ -489,6 +489,9 @@ You should have received a copy of the GNU General Public License along with Can
                 const res = await this.$api.deleteCMDB({id: row.id})
                 if (res.result) {
                     this._successMessage('删除成功')
+                    if (this.pagination.current > 1 && this.dataList.length === 1) {
+                        this.pagination.current--
+                    }
                     this.fetchData()
                 } else {
                     this._errorMessage(res.message)

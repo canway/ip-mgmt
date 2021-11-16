@@ -493,7 +493,7 @@ You should have received a copy of the GNU General Public License along with Can
                             const res = await this.$api.confirm_ip_abnormal({abnormal_ips: idList})
                             if (res.result) {
                                 this._successMessage('确认成功')
-                                this.fetchData()
+                                this.onSearch()
                                 return true
                             } else {
                                 this._errorMessage(res.message)
@@ -521,7 +521,7 @@ You should have received a copy of the GNU General Public License along with Can
                             const res = await this.$api.add_offline_except({ip_list: ipList})
                             if (res.result) {
                                 this._successMessage('加入离线白名单成功')
-                                this.fetchData()
+                                this.onSearch()
                                 return true
                             } else {
                                 this._errorMessage(res.message)

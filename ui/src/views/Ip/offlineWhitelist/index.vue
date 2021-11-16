@@ -433,7 +433,7 @@ You should have received a copy of the GNU General Public License along with Can
                 })
                 if (res.result) {
                     this._successMessage('删除成功')
-                    this.fetchData()
+                    this.onSearch()
                 } else {
                     this._errorMessage(res.message)
                 }
