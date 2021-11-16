@@ -55,7 +55,7 @@ class SyncRecordSerializer(serializers.ModelSerializer):
 
     @staticmethod
     def get_ip_address(instance: CmdbSyncRecord):
-        return instance.ip.ip
+        return instance.ip.ip if instance.ip else ""
 
 
 class SyncRecordSearch(filters.FilterSet):

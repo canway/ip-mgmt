@@ -457,6 +457,7 @@ You should have received a copy of the GNU General Public License along with Can
             },
             limitChange(limit) {
                 this.pagination.limit = limit
+                this.pagination.current = 1
                 this.fetchData()
             },
             // 查询模型
@@ -479,6 +480,7 @@ You should have received a copy of the GNU General Public License along with Can
                 }
             },
             onSearch(value) {
+                this.pagination.current = 1
                 this.fetchData({
                     search: value
                 })

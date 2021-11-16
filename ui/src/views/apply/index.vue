@@ -270,6 +270,7 @@ You should have received a copy of the GNU General Public License along with Can
                 this.fetchData()
             },
             limitChange(limit) {
+                this.pagination.current = 1
                 this.pagination.limit = limit
                 this.fetchData()
             }

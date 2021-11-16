@@ -320,10 +320,12 @@ You should have received a copy of the GNU General Public License along with Can
             },
             limitChange(limit) {
                 this.pagination.limit = limit
+                this.pagination.current = 1
                 this.onSearch()
             },
             // 查询自定义属性
             onSearch() {
+                this.pagination.current = 1
                 const timer = setTimeout(() => {
                     const params = {
                         page: this.pagination.current,
