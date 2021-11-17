@@ -466,7 +466,7 @@ You should have received a copy of the GNU General Public License along with Can
                 try {
                     const res = await this.$api.searchCMDB({
                         page: this.pagination.current,
-                        size: this.pagination.limit,
+                        page_size: this.pagination.limit,
                         ...params
                     })
                     if (res.result) {

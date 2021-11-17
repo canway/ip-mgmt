@@ -15,8 +15,8 @@ You should have received a copy of the GNU General Public License along with Can
                     :show-condition="false"
                     v-model="searchParams"
                     style="width: 500px;background: #fff;"
-                    @search="onSearch"
-                    @clear="onSearch"
+                    @search="filterSearch"
+                    @clear="filterSearch"
                     :show-popover-tag-change="true">
                 </bk-search-select>
             </div>
@@ -323,9 +323,12 @@ You should have received a copy of the GNU General Public License along with Can
                 this.pagination.current = 1
                 this.onSearch()
             },
+            filterSearch() {
+                this.pagination.current = 1
+                this.onSearch()
+            },
             // 查询自定义属性
             onSearch() {
-                this.pagination.current = 1
                 const timer = setTimeout(() => {
                     const params = {
                         page: this.pagination.current,
@@ -377,6 +380,9 @@ You should have received a copy of the GNU General Public License along with Can
                             theme: 'success',
                             message: '删除成功'
                         })
+                        if (this.pagination.current > 1 && this.dataList.length === 1) {
+                            this.pagination.current--
+                        }
                         this.onSearch()
                     } else {
                         this.$bkMessage({

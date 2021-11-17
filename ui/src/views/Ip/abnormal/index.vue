@@ -464,6 +464,7 @@ You should have received a copy of the GNU General Public License along with Can
                     }
                 })
                 this.searchParams = {...params}
+                this.pagination.current = 1
                 this.fetchData({...params})
             },
             // 批量回收的触发事件
