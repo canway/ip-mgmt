@@ -457,6 +457,7 @@ You should have received a copy of the GNU General Public License along with Can
             },
             limitChange(limit) {
                 this.pagination.limit = limit
+                this.pagination.current = 1
                 this.fetchData()
             },
             // 查询模型
@@ -465,7 +466,7 @@ You should have received a copy of the GNU General Public License along with Can
                 try {
                     const res = await this.$api.searchCMDB({
                         page: this.pagination.current,
-                        size: this.pagination.limit,
+                        page_size: this.pagination.limit,
                         ...params
                     })
                     if (res.result) {
@@ -479,6 +480,7 @@ You should have received a copy of the GNU General Public License along with Can
                 }
             },
             onSearch(value) {
+                this.pagination.current = 1
                 this.fetchData({
                     search: value
                 })
@@ -487,6 +489,9 @@ You should have received a copy of the GNU General Public License along with Can
                 const res = await this.$api.deleteCMDB({id: row.id})
                 if (res.result) {
                     this._successMessage('删除成功')
+                    if (this.pagination.current > 1 && this.dataList.length === 1) {
+                        this.pagination.current--
+                    }
                     this.fetchData()
                 } else {
                     this._errorMessage(res.message)

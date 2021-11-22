@@ -185,13 +185,16 @@ def abnormal_check():
     if not rules:
         return
     ip_list = []
+    AbnormalIp.objects.filter(
+        abnormal_code__in=[AbnormalIp.UNASSIGNED_ONLINE, AbnormalIp.ASSIGNED_EXCEEDED_TIME]
+    ).delete()
     for rule in rules:
         if rule["rule_code"] == UNASSIGNED_ONLINE:
             # 未分配但在线
             rule_ip_list = list(
                 Ips.objects.filter(allocate_status=Ips.NO_DISTRIBUTION, online_status=True).values_list("id", flat=True)
             )
-            AbnormalIp.objects.filter(ip__ip__in=rule_ip_list).delete()
+            AbnormalIp.objects.filter(ip_id__in=rule_ip_list).delete()
             ip_list.extend([AbnormalIp(abnormal_code=AbnormalIp.UNASSIGNED_ONLINE, ip_id=i) for i in rule_ip_list])
         elif rule["rule_code"] == ASSIGNED_EXCEEDED_TIME:
             # 已分配但离线超过时限

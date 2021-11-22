@@ -216,7 +216,9 @@ class IpViewSet(ApiGenericMixin, ModelViewSet):
             operate_detail="导入IP分配",
             result=True,
         )
-        return JsonResponse({"result": True, "message": "\n".join(errors)})
+        if errors:
+            return JsonResponse({"result": False, "message": "\n".join(errors)})
+        return JsonResponse({"result": True})
 
     def format_excel_data(self, head_dict, ip_map, ip_net_map, rows, table):
         update_list = []

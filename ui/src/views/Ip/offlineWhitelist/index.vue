@@ -396,6 +396,7 @@ You should have received a copy of the GNU General Public License along with Can
             },
             limitChange(limit) {
                 this.pagination.limit = limit
+                this.pagination.current = 1
                 this.fetchData()
             },
             handleAdvancedSearch(params) {
@@ -432,7 +433,7 @@ You should have received a copy of the GNU General Public License along with Can
                 })
                 if (res.result) {
                     this._successMessage('删除成功')
-                    this.fetchData()
+                    this.onSearch()
                 } else {
                     this._errorMessage(res.message)
                 }
@@ -443,6 +444,9 @@ You should have received a copy of the GNU General Public License along with Can
                 })
                 if (res.result) {
                     this._successMessage('删除成功')
+                    if (this.pagination.current > 1 && this.copyData.length === 1) {
+                        this.pagination.current--
+                    }
                     this.fetchData()
                 } else {
                     this._errorMessage(res.message)
