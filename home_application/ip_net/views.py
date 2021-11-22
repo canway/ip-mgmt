@@ -85,7 +85,9 @@ class IpNetList(ApiGenericMixin, viewsets.ModelViewSet):
             )
         net_list = IpNet.objects.filter(ip_pool_id=ip_pool).exclude(id__in=current_net_list)
         create_ip_by_ip_nets.delay(net_list)
-        return JsonResponse({"result": True, "message": "\n".join(error_msgs)})
+        if error_msgs:
+            return JsonResponse({"result": False, "message": "\n".join(error_msgs)})
+        return JsonResponse({"result": True})
 
     @staticmethod
     def delete_by_ip_net(ip_net_id):

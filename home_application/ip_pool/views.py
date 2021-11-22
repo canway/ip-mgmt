@@ -80,7 +80,9 @@ class IpPoolsViewSet(ApiGenericMixin, ModelViewSet):
                 result=True,
             )
         create_ip_by_ip_pool.delay(ip_pool)
-        return JsonResponse({"result": True, "message": "\n".join(error_msgs)})
+        if error_msgs:
+            return JsonResponse({"result": False, "message": "\n".join(error_msgs)})
+        return JsonResponse({"result": True})
 
     def update(self, request, *args, **kwargs):
         params = request.data
@@ -91,7 +93,9 @@ class IpPoolsViewSet(ApiGenericMixin, ModelViewSet):
         ip_nets = params.get("ip_net", [])
         error_message = self.update_net_by_pool(ip_nets, ip_pool, request.user.username, params)
         create_ip_by_ip_pool.delay(ip_pool)
-        return JsonResponse({"result": True, "message": "\n".join(error_message)})
+        if error_message:
+            return JsonResponse({"result": False, "message": "\n".join(error_message)})
+        return JsonResponse({"result": True})
 
     @staticmethod
     def update_net_by_pool(ip_nets, ip_pool, username, params):
